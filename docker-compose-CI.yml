@@ -1,0 +1,40 @@
+version: '3'
+volumes:
+  auth-data:
+services:
+  # OAuth database server
+  auth-db:
+    image: mysql:5.7
+    container_name: tgw-mysql57
+    ports:
+      - "3306:3306"
+    volumes:
+      # Use this option to persist the MySQL DBs in a shared volume.
+      #- ./mysqldata:/var/lib/mysql:rw,delegated
+      # Use this option to persist the MySQL DBs in a data volume.
+      - auth-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "Ebtylor1871!"
+      MYSQL_ROOT_HOST: "%"
+    restart:  always
+  # OAuth application server
+  auth-server:
+    build:
+      context: .
+      dockerfile: Dockerfile-CI
+    image: tgwconsulting/tgw-oauth:test
+    #entrypoint: ["/opt/tgw/app/lib/docker-entrypoint.sh"]
+    #command: ["rails","server","-b","0.0.0.0","-p","3000"]
+    ports:
+      - "3000:3000"
+    links:
+      - auth-db
+      - auth-cache
+    environment:
+      RAILS_ENV: test
+  # OAuth cache
+  auth-cache:
+    image: redis:5.0
+    container_name: tgw-redis50
+    ports:
+      - "6379:6379"
