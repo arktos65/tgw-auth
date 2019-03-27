@@ -12,21 +12,22 @@
 
 require 'swagger_helper'
 
-describe 'Ping API', type: :request, swagger_doc: 'v1/swagger.json' do
-
-  path '/api/v1/ping' do
-
-    get 'Performs service response check' do
+describe 'Status API', type: :request, swagger_doc: 'v1/swagger.json' do
+  path '/api/v1/status' do
+    get 'Performs service health check' do
       tags 'Monitoring'
-      description 'Perform a response check to see if OAuth2 API is accepting requests.'
+      description 'Performs a health check of the OAuth2 API service including related services (e.g. MySQL).'
       produces 'application/json', 'application/xml'
 
-      response '200', 'ping response' do
+      response '200', 'status response' do
         schema type: :object,
                properties: {
-                   service: { type: :string },
-                   version: { type: :string },
-                   timestamp: { type: :string }
+                 service: { type: :string },
+                 version: { type: :string },
+                 rails_version: { type: :string },
+                 ruby_version: { type: :string },
+                 database_connection: { type: :string },
+                 timestamp: { type: :string }
                },
                required: ['service', 'version', 'timestamp']
         run_test!
