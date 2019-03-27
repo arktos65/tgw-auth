@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Behavior driven development
   gem 'rspec-rails', '~> 3.8'
+  # Ruby code linter
+  gem 'rubocop', '~> 0.66.0'
 end
 
 group :development do
