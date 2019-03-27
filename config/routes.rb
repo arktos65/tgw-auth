@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
       # API Active Check
       get '/ping', to: 'ping#index'
+      # API Health Check
+      get '/status', to: 'status#index'
     end
+
   end
 end
