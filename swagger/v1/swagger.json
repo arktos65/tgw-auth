@@ -11,7 +11,7 @@
         "tags": [
           "Monitoring"
         ],
-        "description": "Enables clients to perform a responsivness check on the API service.",
+        "description": "Perform a response check to see if OAuth2 API is accepting requests.",
         "produces": [
           "application/json",
           "application/xml"
@@ -26,6 +26,52 @@
                   "type": "string"
                 },
                 "version": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "service",
+                "version",
+                "timestamp"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/status": {
+      "get": {
+        "summary": "Performs service health check",
+        "tags": [
+          "Monitoring"
+        ],
+        "description": "Performs a health check of the OAuth2 API service including related services (e.g. MySQL).",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "status response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "service": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "string"
+                },
+                "rails_version": {
+                  "type": "string"
+                },
+                "ruby_version": {
+                  "type": "string"
+                },
+                "database_connection": {
                   "type": "string"
                 },
                 "timestamp": {
