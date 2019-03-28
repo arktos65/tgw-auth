@@ -2,6 +2,11 @@
 
 This log documents all the changes to the TGW OAuth2 provider by version.
 
-## v0.1 (TBD)
+## v0.1 (27-Mar-2019)
 
 - Added Docker support for local development environment.
+- Basic service health monitoring.
+
+## v0.2 (TBD)
+
+- User registration and authentication using Devise.

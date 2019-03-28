@@ -19,7 +19,7 @@ module Api::V1
 
     # Return the service version as a string
     def service_version
-      '0.1.0'
+      '0.2.0'
     end
   end
 end
