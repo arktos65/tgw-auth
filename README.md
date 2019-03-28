@@ -136,8 +136,8 @@ pointing your web browser at `http://localhost:3000/users/sign_in`.
 
 **Development Credentials**
 
-    Username: accounts@tgwconsulting.co
-    Password: 123456
+    Username: user@tgwconsulting.co
+    Password: password123
     
 These credentials are only available on your development instance.
 
@@ -149,7 +149,7 @@ login by pointing your web browser at `http://localhost:3000/admins/sign_in`.
 **Development Credentials**
 
     Username: admin@tgwconsulting.co
-    Password: 123456
+    Password: password123
     
 These credentials are only available on your development instance.
 
