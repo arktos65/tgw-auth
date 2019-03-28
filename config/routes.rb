@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users
   root to: "home#index"
   # get 'home/index'
 
@@ -10,6 +8,12 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      devise_for :users, controllers: {
+        registrations: 'api/v1/users/registrations',
+      }, skip: [:sessions, :password]
+      devise_for :admins, controllers: {
+        registrations: 'api/v1/admins/registrations',
+      }, skip: [:sessions, :password]
 
       # API Active Check
       get '/ping', to: 'ping#index'
