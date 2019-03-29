@@ -10,3 +10,5 @@ This log documents all the changes to the TGW OAuth2 provider by version.
 ## v0.2 (TBD)
 
 - User registration and authentication using Devise.
+- Doorkeeper OAuth2 support.
+- Accepts `password` grant type for fetching access tokens.
