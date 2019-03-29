@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  use_doorkeeper
+  # Use for login and autorize all resource
+  use_doorkeeper do
+    # No need to register client application
+    skip_controllers :applications, :authorized_applications
+  end
+
   root to: "home#index"
-  # get 'home/index'
 
   # API documentation
   mount Rswag::Ui::Engine => '/api-docs'
