@@ -12,3 +12,6 @@ This log documents all the changes to the TGW OAuth2 provider by version.
 - User registration and authentication using Devise.
 - Doorkeeper OAuth2 support.
 - Accepts `password` grant type for fetching access tokens.
+- Administrator login support as a separate model.
+- OAuth application management.
+

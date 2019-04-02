@@ -2,20 +2,28 @@ Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
 
-  # This block will be called to check whether the resource owner is authenticated or not.
-  resource_owner_authenticator do
-    raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
-    # Put your resource owner authentication logic here.
-    # Example implementation:
-    #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
-  end
-
   # In this flow, a token is requested in exchange for the resource owner credentials (username and password)
   resource_owner_from_credentials do |routes|
     user = User.find_for_database_authentication(:email => params[:username])
     if user && user.valid_for_authentication? { user.valid_password?(params[:password]) }
       user
     end
+  end
+
+  resource_owner_authenticator do
+    current_user || redirect_to(new_user_session_url)
+  end
+
+  resource_owner_authenticator do |routes|
+    # Put your resource owner authentication logic here.
+    # If you want to use named routes from your app you need
+    # to call them on routes object eg.
+    # routes.new_user_session_path
+    current_user || warden.authenticate!(:scope => :user)
+  end
+
+  admin_authenticator do
+    current_admin || warden.authenticate!(:scope => :admin)
   end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
