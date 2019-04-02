@@ -18,6 +18,18 @@ Doorkeeper.configure do
     end
   end
 
+  resource_owner_authenticator do
+    current_user || redirect_to(new_user_session_url)
+  end
+
+  resource_owner_authenticator do
+    user_id = session["warden.user.user.key"][0][0] rescue nil
+    User.find_by_id(user_id) || begin
+      session['user_return_to'] = request.url
+      redirect_to(new_user_session_url)
+    end
+  end
+
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
