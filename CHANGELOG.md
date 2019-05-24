@@ -2,10 +2,9 @@
 
 This log documents all the changes to the TGW OAuth2 provider by version.
 
-## v0.1 (27-Mar-2019)
+## v0.3 (TBD)
 
-- Added Docker support for local development environment.
-- Basic service health monitoring.
+- Bug fixes and updated seeder for development environment.
 
 ## v0.2 (02-Apr-2019)
 
@@ -15,3 +14,7 @@ This log documents all the changes to the TGW OAuth2 provider by version.
 - Administrator login support as a separate model.
 - OAuth application management.
 
+## v0.1 (27-Mar-2019)
+
+- Added Docker support for local development environment.
+- Basic service health monitoring.

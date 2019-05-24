@@ -39,12 +39,15 @@ admin = Admin.create!(
 puts " * [OK] Admin (seed)"
 
 puts " * [  ] OAuth applications (seed)"
-puts " * [OK] OAuth applications (seed)"
-
 app = Doorkeeper::Application.create!(
   name: "Barrique API Development",
   redirect_uri: "http://localhost:3000/users/auth/webgoal/callback"
 )
+dev = Doorkeeper::Application.create!(
+  name: "OAuth Development",
+  redirect_uri: "urn:ietf:wg:oauth:2.0:oob"
+)
+puts " * [OK] OAuth applications (seed)"
 
 puts ""
 puts "***********************************"
@@ -53,4 +56,12 @@ puts "name: #{app.name}"
 puts "redirect_uri: #{app.redirect_uri}"
 puts "uid: #{app.uid}"
 puts "secret: #{app.secret}"
+puts "***********************************"
+puts ""
+puts "***********************************"
+puts "Application: "
+puts "name: #{dev.name}"
+puts "redirect_uri: #{dev.redirect_uri}"
+puts "uid: #{dev.uid}"
+puts "secret: #{dev.secret}"
 puts "***********************************"
