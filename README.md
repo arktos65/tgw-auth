@@ -55,6 +55,7 @@ things up. From the work directory where you plan to save the source code:
     $ git clone git@github.com:arktos65/tgw-auth.git
     $ cd tgw-auth
     $ bundle install
+    $ brew install yarn
     
 The previous commands clone a copy of the `tgw-auth` repository from Github to your local work
 directory.  Then you change directory into the source code root directory and run `bundler` to 
