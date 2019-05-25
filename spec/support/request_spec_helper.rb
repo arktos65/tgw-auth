@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/support/request_spec_helper.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.

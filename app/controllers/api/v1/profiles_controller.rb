@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/v1/profiles_controller.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -29,9 +31,10 @@ module Api::V1
     end
 
     private
-    def profile_params
-      profile_params = params[:profile]
-      profile_params ? profile_params.permit(:name, :email, :username) : {}
-    end
+
+      def profile_params
+        profile_params = params[:profile]
+        profile_params ? profile_params.permit(:name, :email, :username) : {}
+      end
   end
 end

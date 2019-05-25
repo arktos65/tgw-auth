@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/integrations/oauth/authorize_spec.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -11,14 +13,3 @@
 #
 
 require "swagger_helper"
-
-describe "OAuth Authorize API", type: :request, swagger_doc: "v1/swagger.json" do
-  path "/oauth/authorize" do
-    get "Returns a page with an authorization code" do
-      tags "OAuth"
-      description "Returns a page with an OAuth authorization code."
-      produces "application/json"
-      parameter name: :id, :in => :path, :type => :string
-    end
-  end
-end
