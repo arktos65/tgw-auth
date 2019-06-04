@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# app/controllers/api/v1/users_controller.rb
+# spec/integrations/oauth/revoke_spec.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
 #
@@ -11,20 +11,5 @@
 # permission from management. TGW Consulting does not claim ownership of included
 # open source software components, which are subject to their own licenses.
 #
-module Api::V1
-  class UsersController < ApiController
-    before_action -> { doorkeeper_authorize! :public }, only: [:index]
 
-    before_action only: [:create, :update, :destroy] do
-      doorkeeper_authorize! :write
-    end
-
-    def index
-      respond_with User.recent
-    end
-
-    def create
-      respond_with "api_v1", User.create!(params[:user])
-    end
-  end
-end
+require "swagger_helper"

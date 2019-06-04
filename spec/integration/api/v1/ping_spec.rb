@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/integrations/api/v1/ping_spec.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -10,25 +12,23 @@
 # open source software components, which are subject to their own licenses.
 #
 
-require 'swagger_helper'
+require "swagger_helper"
 
-describe 'Ping API', type: :request, swagger_doc: 'v1/swagger.json' do
+describe "Ping API", type: :request, swagger_doc: "v1/swagger.json" do
+  path "/api/v1/ping" do
+    get "Performs service response check" do
+      tags "Monitoring"
+      description "Perform a response check to see if OAuth2 API is accepting requests."
+      produces "application/json", "application/xml"
 
-  path '/api/v1/ping' do
-
-    get 'Performs service response check' do
-      tags 'Monitoring'
-      description 'Perform a response check to see if OAuth2 API is accepting requests.'
-      produces 'application/json', 'application/xml'
-
-      response '200', 'ping response' do
+      response "200", "ping response" do
         schema type: :object,
                properties: {
                    service: { type: :string },
                    version: { type: :string },
                    timestamp: { type: :string }
                },
-               required: ['service', 'version', 'timestamp']
+               required: ["service", "version", "timestamp"]
         run_test!
       end
     end

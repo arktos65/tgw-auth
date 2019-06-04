@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/integrations/api/v1/ping_spec.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -10,16 +12,16 @@
 # open source software components, which are subject to their own licenses.
 #
 
-require 'swagger_helper'
+require "swagger_helper"
 
-describe 'Status API', type: :request, swagger_doc: 'v1/swagger.json' do
-  path '/api/v1/status' do
-    get 'Performs service health check' do
-      tags 'Monitoring'
-      description 'Performs a health check of the OAuth2 API service including related services (e.g. MySQL).'
-      produces 'application/json', 'application/xml'
+describe "Status API", type: :request, swagger_doc: "v1/swagger.json" do
+  path "/api/v1/status" do
+    get "Performs service health check" do
+      tags "Monitoring"
+      description "Performs a health check of the OAuth2 API service including related services (e.g. MySQL)."
+      produces "application/json", "application/xml"
 
-      response '200', 'status response' do
+      response "200", "status response" do
         schema type: :object,
                properties: {
                  service: { type: :string },
@@ -29,7 +31,7 @@ describe 'Status API', type: :request, swagger_doc: 'v1/swagger.json' do
                  database_connection: { type: :string },
                  timestamp: { type: :string }
                },
-               required: ['service', 'version', 'timestamp']
+               required: ["service", "version", "timestamp"]
         run_test!
       end
     end

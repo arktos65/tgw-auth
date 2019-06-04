@@ -2,9 +2,10 @@
 
 This log documents all the changes to the TGW OAuth2 provider by version.
 
-## v0.3 (TBD)
+## v0.3 (25-May-2019)
 
 - Bug fixes and updated seeder for development environment.
+- Cleaned up code based on Rubocop warnings.
 
 ## v0.2 (02-Apr-2019)
 

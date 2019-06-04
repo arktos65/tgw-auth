@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
 
   # In this flow, a token is requested in exchange for the resource owner credentials (username and password)
   resource_owner_from_credentials do |routes|
-    user = User.find_for_database_authentication(:email => params[:username])
+    user = User.find_for_database_authentication(email: params[:username])
     if user && user.valid_for_authentication? { user.valid_password?(params[:password]) }
       user
     end
@@ -19,14 +21,14 @@ Doorkeeper.configure do
     # If you want to use named routes from your app you need
     # to call them on routes object eg.
     # routes.new_user_session_path
-    current_user || warden.authenticate!(:scope => :user)
+    current_user || warden.authenticate!(scope: :user)
   end
 
   admin_authenticator do
-    current_admin || warden.authenticate!(:scope => :admin)
+    current_admin || warden.authenticate!(scope: :admin)
   end
 
-  # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
+  # If you didn"t skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
   # every time somebody will try to access the admin web interface.
@@ -76,19 +78,19 @@ Doorkeeper.configure do
   # Use a custom class for generating the access token.
   # See https://github.com/doorkeeper-gem/doorkeeper#custom-access-token-generator
   #
-  # access_token_generator '::Doorkeeper::JWT'
+  # access_token_generator "::Doorkeeper::JWT"
 
   # The controller Doorkeeper::ApplicationController inherits from.
   # Defaults to ActionController::Base.
   # See https://github.com/doorkeeper-gem/doorkeeper#custom-base-controller
   #
-  # base_controller 'ApplicationController'
+  # base_controller "ApplicationController"
 
   # Reuse access token for the same resource owner within an application (disabled by default).
   #
   # This option protects your application from creating new tokens before old valid one becomes
-  # expired so your database doesn't bloat. Keep in mind that when this option is `on` Doorkeeper
-  # doesn't updates existing token expiration time, it will create a new token instead.
+  # expired so your database doesn"t bloat. Keep in mind that when this option is `on` Doorkeeper
+  # doesn"t updates existing token expiration time, it will create a new token instead.
   # Rationale: https://github.com/doorkeeper-gem/doorkeeper/issues/383
   #
   # reuse_access_token
@@ -141,12 +143,12 @@ Doorkeeper.configure do
   # access_token_methods :from_bearer_authorization, :from_access_token_param, :from_bearer_param
 
   # Change the native redirect uri for client apps
-  # When clients register with the following redirect uri, they won't be redirected to any server and
+  # When clients register with the following redirect uri, they won"t be redirected to any server and
   # the authorizationcode will be displayed within the provider
   # The value can be any string. Use nil to disable this feature. When disabled, clients must provide a valid URL
   # (Similar behaviour: https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi)
   #
-  # native_redirect_uri 'urn:ietf:wg:oauth:2.0:oob'
+  # native_redirect_uri "urn:ietf:wg:oauth:2.0:oob"
 
   # Forces the usage of the HTTPS protocol in non-native redirect uris (enabled
   # by default in non-development environments). OAuth2 delegates security in
@@ -158,15 +160,15 @@ Doorkeeper.configure do
   #
   # force_ssl_in_redirect_uri !Rails.env.development?
   #
-  # force_ssl_in_redirect_uri { |uri| uri.host != 'localhost' }
+  # force_ssl_in_redirect_uri { |uri| uri.host != "localhost" }
 
-  # Specify what redirect URI's you want to block during Application creation.
+  # Specify what redirect URI"s you want to block during Application creation.
   # Any redirect URI is whitelisted by default.
   #
-  # You can use this option in order to forbid URI's with 'javascript' scheme
+  # You can use this option in order to forbid URI"s with "javascript" scheme
   # for example.
   #
-  # forbid_redirect_uri { |uri| uri.scheme.to_s.downcase == 'javascript' }
+  # forbid_redirect_uri { |uri| uri.scheme.to_s.downcase == "javascript" }
 
   # Specify how authorization errors should be handled.
   # By default, doorkeeper renders json errors when access token
@@ -199,7 +201,7 @@ Doorkeeper.configure do
   #
   grant_flows %w[password authorization_code]
 
-  # Hook into the strategies' request & response life-cycle in case your
+  # Hook into the strategies" request & response life-cycle in case your
   # application needs advanced customization or logging:
   #
   # before_successful_strategy_response do |request|

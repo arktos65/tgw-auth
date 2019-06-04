@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/v1/ping_controller.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -9,7 +11,7 @@
 # permission from management. TGW Consulting does not claim ownership of included
 # open source software components, which are subject to their own licenses.
 #
-require 'date'
+require "date"
 
 module Api::V1
   class PingController < ApiController
@@ -20,7 +22,7 @@ module Api::V1
       render json: {
           service: service_name,
           version: service_version,
-          message: 'Hello World',
+          message: "Hello World",
           timestamp: current_time
       }, status: 200
     end

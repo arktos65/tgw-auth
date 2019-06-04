@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/application_controller.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -10,5 +12,4 @@
 # open source software components, which are subject to their own licenses.
 #
 class ApplicationController < ActionController::Base
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/home_controller.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/v1/api_controller.rb
 #
 # Copyright 2019 TGW Consulting, LLC. All rights reserved.
@@ -23,22 +25,22 @@ module Api::V1
 
     protected
 
-    # Devise methods
-    # Authentication key(:username) and password field will be added automatically by devise.
-    def configure_permitted_parameters
-      added_attrs = [:email, :first_name, :last_name]
-      devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
-      devise_parameter_sanitizer.permit :account_update, keys: added_attrs
-    end
+      # Devise methods
+      # Authentication key(:username) and password field will be added automatically by devise.
+      def configure_permitted_parameters
+        added_attrs = [:email, :first_name, :last_name]
+        devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+        devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+      end
 
-    # Return the service name as a string
-    def service_name
-      'TGW OAuth2 Provider::API'
-    end
+      # Return the service name as a string
+      def service_name
+        "TGW OAuth2 Provider::API"
+      end
 
-    # Return the service version as a string
-    def service_version
-      '0.2.0'
-    end
+      # Return the service version as a string
+      def service_version
+        "0.3.0"
+      end
   end
 end
