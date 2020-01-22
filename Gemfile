@@ -48,6 +48,7 @@ group :development, :test do
   # Ruby code linter
   gem "rubocop", "~> 0.66.0"
   gem "rubocop-rails_config"
+  gem "english"
 end
 
 group :development do

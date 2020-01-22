@@ -6,7 +6,7 @@ This document provides an overview of the TGW OAuth2 provider for
 web, mobile, and native applications accessing TGW services.  You
 will also find instructions for setting up development and test environments.
 
-**Requirements:** Ruby ~> v2.5.1, Rails ~> v5.2.2, MySQL Server ~> 5.7, Docker CE ~> v18.09
+**Requirements:** Ruby ~> v2.5.4, Rails ~> v5.2.2, MySQL Server ~> 5.7, Docker Desktop ~> 2.2.0.0
 
 ## Development Prerequisites
 
@@ -25,20 +25,20 @@ Barrique API project:
 These instructions assume you have installed the Ruby Version Manager on your workstation.  To install
 Ruby:
 
-    $ rvm install 2.5.1
+    $ rvm install 2.5.4
 
 RVM will install the Ruby interpreter.  It's good practice to use gemsets to keep various projects 
 separated to reduce the likelihood of Ruby gem version conflicts between your projects.  The following
 snippet can be used to create your environment:
 
-    $ rvm use 2.5.1
+    $ rvm use 2.5.4
     $ rvm gemset create tgw
-    $ rvm use 2.5.1@tgw
+    $ rvm use 2.5.4@tgw
     $ gem install bundler
     
 You can set your gemset to be the default by using the command:
 
-    $ rvm use 2.5.1@tgw --default
+    $ rvm use 2.5.4@tgw --default
     
 ### Setting Up Docker Environment
 
@@ -68,6 +68,14 @@ You also should install the git hooks for the project.  From the root source cod
     
 This script will install the git hooks in their correct location.
 
+### Network local hosts
+
+Edit your /etc/hosts file and add the following line:
+
+    127.0.0.1 auth-db auth-server auth-cache
+
+This host file entry will allow you to run a development instance of your OAuth services in Docker.
+
 ### Initialize Database Environment
 
 These instructions assume you're running MySQL as a containerized service defined in the project's
@@ -76,12 +84,12 @@ set your database credentials to.
 
 From the root source code directory:
 
-    $ rvm use 2.5.1@tgw
+    $ rvm use 2.5.4@tgw
     $ docker-compose up auth-db
     
 Open a new terminal window and then:
 
-    $ rvm use 2.5.1@tgw
+    $ rvm use 2.5.4@tgw
     $ rails db:create db:migrate
     $ rails db:seed
     
@@ -244,7 +252,7 @@ Docker will start a container with a `bash` shell.  This command is useful for c
 - Author:: Sean M. Sullivan (<sean@tgwconsulting.co>)
 
 ```text
-Copyright:: 2019 TGW Consulting, LLC.  All rights reserved.
+Copyright:: 2019-2020 TGW Consulting, LLC.  All rights reserved.
 
 This source code is proprietary, confidential information of TGW Consulting, LLC.
 It contains TGW Consulting intellectual property, including trade secrets and
