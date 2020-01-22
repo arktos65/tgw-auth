@@ -16,7 +16,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
-# you"ve limited to :test, :development, or :production.
+# you have limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 Dotenv::Railtie.load
@@ -31,7 +31,7 @@ module TgwAuth
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    # Don"t generate system test files.
+    # Do not generate system test files.
     config.generators.system_tests = nil
   end
 end

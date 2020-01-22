@@ -15,7 +15,7 @@ en:
               secured_uri: "must be an HTTPS/SSL URI."
               forbidden_uri: "is forbidden by the server."
             scopes:
-              not_match_configured: "doesn"t match configured on the server."
+              not_match_configured: "does not match configured on the server."
 
   doorkeeper:
     applications:
@@ -88,7 +88,7 @@ en:
       messages:
         # Common error messages
         invalid_request: "The request is missing a required parameter, includes an unsupported parameter value, or is otherwise malformed."
-        invalid_redirect_uri: "The requested redirect uri is malformed or doesn"t match client redirect URI."
+        invalid_redirect_uri: "The requested redirect uri is malformed or does not match client redirect URI."
         unauthorized_client: "The client is not authorized to perform this request using this method."
         access_denied: "The resource owner or authorization server denied the request."
         invalid_scope: "The requested scope is invalid, unknown, or malformed."
