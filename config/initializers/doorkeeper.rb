@@ -28,7 +28,7 @@ Doorkeeper.configure do
     current_admin || warden.authenticate!(scope: :admin)
   end
 
-  # If you didn"t skip applications controller from Doorkeeper routes in your application routes.rb
+  # If you did not skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
   # every time somebody will try to access the admin web interface.
@@ -89,8 +89,8 @@ Doorkeeper.configure do
   # Reuse access token for the same resource owner within an application (disabled by default).
   #
   # This option protects your application from creating new tokens before old valid one becomes
-  # expired so your database doesn"t bloat. Keep in mind that when this option is `on` Doorkeeper
-  # doesn"t updates existing token expiration time, it will create a new token instead.
+  # expired so your database does not bloat. Keep in mind that when this option is `on` Doorkeeper
+  # does not updates existing token expiration time, it will create a new token instead.
   # Rationale: https://github.com/doorkeeper-gem/doorkeeper/issues/383
   #
   # reuse_access_token
@@ -143,7 +143,7 @@ Doorkeeper.configure do
   # access_token_methods :from_bearer_authorization, :from_access_token_param, :from_bearer_param
 
   # Change the native redirect uri for client apps
-  # When clients register with the following redirect uri, they won"t be redirected to any server and
+  # When clients register with the following redirect uri, they will not be redirected to any server and
   # the authorizationcode will be displayed within the provider
   # The value can be any string. Use nil to disable this feature. When disabled, clients must provide a valid URL
   # (Similar behaviour: https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi)
@@ -162,10 +162,10 @@ Doorkeeper.configure do
   #
   # force_ssl_in_redirect_uri { |uri| uri.host != "localhost" }
 
-  # Specify what redirect URI"s you want to block during Application creation.
+  # Specify what redirect URIs you want to block during Application creation.
   # Any redirect URI is whitelisted by default.
   #
-  # You can use this option in order to forbid URI"s with "javascript" scheme
+  # You can use this option in order to forbid URIs with "javascript" scheme
   # for example.
   #
   # forbid_redirect_uri { |uri| uri.scheme.to_s.downcase == "javascript" }
