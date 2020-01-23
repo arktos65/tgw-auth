@@ -1,0 +1,58 @@
+pool:
+  name: tgw-ci
+steps:
+- task: DockerCompose@0
+  displayName: 'Run TGW Auth Services'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    action: 'Run services'
+  timeoutInMinutes: 600
+
+- task: DockerCompose@0
+  displayName: 'Set Database Environment'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    dockerComposeFileArgs: 'RAILS_ENV=test'
+    dockerComposeCommand: 'run auth-server rails db:environment:set RAILS_ENV=test'
+  enabled: false
+
+- task: DockerCompose@0
+  displayName: 'Run Database Migrations'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    dockerComposeFileArgs: 'RAILS_ENV=test'
+    dockerComposeCommand: 'run auth-server rails db:create db:migrate'
+  continueOnError: true
+  timeoutInMinutes: 300
+
+- task: DockerCompose@0
+  displayName: 'Run RSpec Tests'
+  inputs:
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    dockerComposeFileArgs: 'RAILS_ENV=test'
+    dockerComposeCommand: 'run auth-server bundle exec rspec'
+  continueOnError: true
+  timeoutInMinutes: 300
+
+- task: DockerCompose@0
+  displayName: 'Drop Test Database'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'docker-hub-tgwconsulting'
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    dockerComposeFileArgs: 'RAILS_ENV=test'
+    dockerComposeCommand: 'run auth-server rails db:drop'
+  continueOnError: true
+
+- task: DockerCompose@0
+  displayName: 'Shutdown Containers'
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerRegistryEndpoint: 'docker-hub-tgwconsulting'
+    dockerComposeFile: '**/docker-compose-CI.yml'
+    dockerComposeFileArgs: 'RAILS_ENV=test'
+    dockerComposeCommand: down
+  continueOnError: true
