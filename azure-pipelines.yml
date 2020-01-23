@@ -1,5 +1,5 @@
 pool:
-  name: tgw-ci
+  name: msync
 steps:
 - task: DockerCompose@0
   displayName: 'Run TGW Auth Services'
