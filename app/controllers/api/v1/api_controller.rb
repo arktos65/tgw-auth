@@ -24,7 +24,6 @@ module Api::V1
     end
 
     protected
-
       # Devise methods
       # Authentication key(:username) and password field will be added automatically by devise.
       def configure_permitted_parameters

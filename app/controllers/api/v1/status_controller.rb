@@ -33,7 +33,6 @@ module Api::V1
     end
 
     private
-
       # Attempts to connect to the database defined in the config/environment and
       # returns an OK or ERROR status whether the connection is successful or not.
       def check_database
