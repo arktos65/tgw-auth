@@ -31,7 +31,6 @@ module Api::V1
     end
 
     private
-
       def profile_params
         profile_params = params[:profile]
         profile_params ? profile_params.permit(:name, :email, :username) : {}
