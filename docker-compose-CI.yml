@@ -22,7 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-CI
-    image: tgwconsulting/tgw-oauth:test
+    image: tgwconsulting/tgw-oauth-server:test
     #entrypoint: ["/opt/tgw/app/lib/docker-entrypoint.sh"]
     #command: ["rails","server","-b","0.0.0.0","-p","3000"]
     ports:
