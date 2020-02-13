@@ -28,3 +28,8 @@
 
 # Rubymine files
 .idea/
+
+# Ignore environment files for security purposes
+.env*
+!.env.test.local
+!.env.development.local
