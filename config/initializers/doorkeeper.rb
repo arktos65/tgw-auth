@@ -5,7 +5,7 @@ Doorkeeper.configure do
   orm :active_record
 
   # Allow user to application mapping
-  enable_application_owner :confirmation => false
+  enable_application_owner :confirmation => true
 
   # In this flow, a token is requested in exchange for the resource owner credentials (username and password)
   resource_owner_from_credentials do |routes|
