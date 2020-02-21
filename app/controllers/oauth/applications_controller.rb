@@ -30,6 +30,6 @@ class Oauth::ApplicationsController < Doorkeeper::ApplicationsController
 
   private
     def set_application
-      @application = current_admin.oauth_applications.find(params[:id])
+      @application = Doorkeeper::Application.find(params[:id])
     end
 end
