@@ -4,6 +4,9 @@ Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (needs plugins)
   orm :active_record
 
+  # Allow user to application mapping
+  enable_application_owner :confirmation => false
+
   # In this flow, a token is requested in exchange for the resource owner credentials (username and password)
   resource_owner_from_credentials do |routes|
     user = User.find_for_database_authentication(email: params[:username])

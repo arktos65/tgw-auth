@@ -2,7 +2,9 @@
 
 Rails.application.routes.draw do
   # Authentication and authorization resources
-  use_doorkeeper
+  use_doorkeeper do
+    controllers :applications => 'oauth/applications'
+  end
   devise_for :users
   devise_for :admins
 
