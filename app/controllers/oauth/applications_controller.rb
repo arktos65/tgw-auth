@@ -8,7 +8,7 @@ class Oauth::ApplicationsController < Doorkeeper::ApplicationsController
   before_action :set_application, only: %i[show edit update destroy]
 
   def index
-    @applications = Application.ordered_by(:created_at)
+    @applications = Doorkeeper::Application.ordered_by(:created_at)
 
     respond_to do |format|
       format.html
