@@ -1,2 +1,4 @@
 # Exclude HTML design files
 workspace
+# Exclude git hooks
+hooks
