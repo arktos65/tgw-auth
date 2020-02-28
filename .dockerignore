@@ -2,3 +2,5 @@
 workspace
 # Exclude git hooks
 hooks
+# Exclude Kubernetes scripts
+kubernetes
