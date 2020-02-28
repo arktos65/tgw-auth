@@ -14,10 +14,10 @@ if [ "$confirm" = "y" ] || [ "$confirm" = "Y" ]; then
     kubectl create -f namespaces/test.json
 
     echo "...Creating Kubernetes contexts"
-    kubectl config set-context barrique-dev --namespace=barrique-dev \
+    kubectl config set-context auth-dev --namespace=auth-dev \
         --cluster=$KUBE_CLUSTER \
         --user=$KUBE_USER
-    kubectl config set-context barrique-test --namespace=barrique-test \
+    kubectl config set-context auth-test --namespace=auth-test \
         --cluster=$KUBE_CLUSTER \
         --user=$KUBE_USER
     
