@@ -3,9 +3,9 @@
     "kind": "Namespace",
     "apiVersion": "v1",
     "metadata": {
-      "name": "barrique-dev",
+      "name": "auth-dev",
       "labels": {
-        "name": "barrique-dev"
+        "name": "auth-dev"
       }
     }
   }

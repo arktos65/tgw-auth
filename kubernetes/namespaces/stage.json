@@ -3,9 +3,9 @@
     "kind": "Namespace",
     "apiVersion": "v1",
     "metadata": {
-      "name": "barrique-stage",
+      "name": "auth-stage",
       "labels": {
-        "name": "barrique-stage"
+        "name": "auth-stage"
       }
     }
   }
