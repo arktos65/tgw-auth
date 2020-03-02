@@ -4,7 +4,7 @@ metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.20.0 ()
-    kompose.volume.size: 1Gi
+    kompose.volume.size: 5Gi
   creationTimestamp: null
   labels:
     io.kompose.service: auth-db
@@ -18,7 +18,7 @@ spec:
       annotations:
         kompose.cmd: kompose convert
         kompose.version: 1.20.0 ()
-        kompose.volume.size: 1Gi
+        kompose.volume.size: 5Gi
       creationTimestamp: null
       labels:
         io.kompose.service: auth-db
