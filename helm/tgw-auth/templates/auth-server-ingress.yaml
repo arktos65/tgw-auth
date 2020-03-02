@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: auth-server
+  name: auth-server
+spec:
+  rules:
+  - host: auth.tgwconsulting.local
+    http:
+      paths:
+      - backend:
+          serviceName: auth-server
+          servicePort: 3000
+status:
+  loadBalancer: {}
