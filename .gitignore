@@ -33,3 +33,5 @@
 .env*
 !.env.test.local
 !.env.development.local
+
+.DS_Store
