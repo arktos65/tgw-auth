@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# spec/support/auth_helper.rb
+# spec/support/auth_spec_helper.rb
 #
 # Copyright 2019-2020 TGW Consulting, LLC
 #
@@ -17,8 +17,18 @@
 # limitations under the License.
 #
 
-# Spec test constants
-USER_ACCOUNT = "user@tgwconsulting.co"
-USER_PASSWORD = "password123"
-ADMIN_ACCOUNT = "admin@tgwconsulting.co"
-ADMIN_PASSWORD = "password123"
+module AuthSpecHelper
+  # Spec test constants
+  USER_ACCOUNT = "test_user@tgwconsulting.co"
+  USER_PASSWORD = "password123"
+  ADMIN_ACCOUNT = "test_admin@tgwconsulting.co"
+  ADMIN_PASSWORD = "password123"
+  APP_NAME = "Test Application".freeze
+  REDIRECT_URL =  "urn:ietf:wg:oauth:2.0:oob".freeze
+
+  def token_scopes(scopes)
+    app = Doorkeeper::Application.create!(:name => APP_NAME, :redirect_uri => REDIRECT_URL)
+    user =  create(:user)
+    Doorkeeper::AccessToken.create!(:application_id => app.id, :resource_owner_id => user.id, scopes: scopes)
+  end
+end

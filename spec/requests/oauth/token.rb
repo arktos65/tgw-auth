@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 require "rails_helper"
-require "support/auth_helper"
 
 RSpec.describe "OAuth Token API", type: :request do
   describe "POST /oauth/token" do

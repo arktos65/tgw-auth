@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 require "rails_helper"
-require "support/auth_helper"
 
 RSpec.describe "Validate OAuth Token", type: :request do
 end
