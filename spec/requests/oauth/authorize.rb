@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# spec/requests/oauth/token.rb
+# spec/requests/oauth/authorize.rb
 #
 # Copyright 2019-2020 TGW Consulting, LLC
 #
@@ -19,25 +19,25 @@
 require "rails_helper"
 
 =begin
-curl -F grant_type=authorization_code \
+curl -F response_type=code \
 -F client_id=9b36d8c0db59eff5038aea7a417d73e69aea75b41aac771816d2ef1b3109cc2f \
 -F client_secret=d6ea27703957b69939b8104ed4524595e210cd2e79af587744a7eb6e58f5b3d2 \
--F code=fd0847dbb559752d932dd3c1ac34ff98d27b11fe2fea5a864f44740cd7919ad0 \
 -F redirect_uri=urn:ietf:wg:oauth:2.0:oob \
--X POST http://localhost:3000/oauth/token
+-F username=user@example.com \
+-X POST http://localhost:3000/oauth/authorize
 =end
 
-RSpec.describe "OAuth Token API", type: :request do
-  describe "POST /oauth/token" do
+RSpec.describe "OAuth Authorize API", type: :request do
+  describe "POST /oauth/authorize" do
     before {
       @oauth_app = AuthSpecHelper.token_scopes("public")
       headers = {"ACCEPT" => "application/json"}
-      post "/oauth/token", :params => {
+      post "/oauth/authorize", :params => {
           :authorization => {
-              :grant_type => "authorization_code",
+              :response_type => "code",
               :client_id => @oauth_app.client_id,
               :client_secret => @oauth_app.client_secret,
-              :code => @oauth_app.code,
+              :username => @oauth_app.USER_ACCOUNT,
               :redirect_uri => @oauth_app.redirect_uri
           }
       },
@@ -46,14 +46,6 @@ RSpec.describe "OAuth Token API", type: :request do
 
     it "should return a JSON response" do
       expect(response.content_type).to eq("application/json")
-    end
-
-    it "should return a valid access token" do
-      expect(json["access_token"]).to eq("TGW OAuth2 Provider::API")
-    end
-
-    it "should return a bearer token type" do
-      expect(json["token_type"]).to eq("bearer")
     end
 
     it "returns a valid status code" do
