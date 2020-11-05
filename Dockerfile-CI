@@ -1,4 +1,4 @@
-FROM ruby:2.5.4-slim AS build
+FROM ruby:2.6.6-slim AS build
 MAINTAINER Sean M. Sullivan <sean@tgwconsulting.co>
 
 # Install dependencies:

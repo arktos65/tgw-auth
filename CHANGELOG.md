@@ -2,6 +2,10 @@
 
 This log documents all the changes to the TGW OAuth2 provider by version.
 
+## v0.3.1 (04-Nov-2020)
+
+- Updated Ruby language support from 2.5.4 to 2.6.6.
+
 ## v0.3 (20-Feb-2020)
 
 ### Features
