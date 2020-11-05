@@ -6,7 +6,7 @@ This document provides an overview of the TGW OAuth2 provider for
 web, mobile, and native applications accessing TGW services.  You
 will also find instructions for setting up development and test environments.
 
-**Requirements:** Ruby ~> v2.5.4, Rails ~> v5.2.2, MySQL Server ~> 5.7, Docker Desktop ~> 2.2.0.0
+**Requirements:** Ruby ~> v2.6.6, Rails ~> v5.2.2, MySQL Server ~> 5.7, Docker Desktop ~> 2.5.0.0
 
 ## Development Prerequisites
 
@@ -25,20 +25,20 @@ Barrique API project:
 These instructions assume you have installed the Ruby Version Manager on your workstation.  To install
 Ruby:
 
-    $ rvm install 2.5.4
+    $ rvm install 2.6.6
 
 RVM will install the Ruby interpreter.  It's good practice to use gemsets to keep various projects 
 separated to reduce the likelihood of Ruby gem version conflicts between your projects.  The following
 snippet can be used to create your environment:
 
-    $ rvm use 2.5.4
+    $ rvm use 2.6.6
     $ rvm gemset create tgw
-    $ rvm use 2.5.4@tgw
+    $ rvm use 2.6.6@tgw
     $ gem install bundler
     
 You can set your gemset to be the default by using the command:
 
-    $ rvm use 2.5.4@tgw --default
+    $ rvm use 2.6.6@tgw --default
     
 ### Setting Up Docker Environment
 
@@ -84,12 +84,12 @@ set your database credentials to.
 
 From the root source code directory:
 
-    $ rvm use 2.5.4@tgw
+    $ rvm use 2.6.6@tgw
     $ docker-compose up auth-db
     
 Open a new terminal window and then:
 
-    $ rvm use 2.5.4@tgw
+    $ rvm use 2.6.6@tgw
     $ rails db:create db:migrate
     $ rails db:seed
     
