@@ -3,17 +3,17 @@ kind: Service
 metadata:
   annotations:
     kompose.cmd: kompose convert
-    kompose.version: 1.20.0 ()
-    kompose.volume.size: 5Gi
+    kompose.version: 1.22.0 (HEAD)
+    kompose.volume.size: 1Gi
   creationTimestamp: null
   labels:
     io.kompose.service: auth-db
   name: auth-db
 spec:
   ports:
-  - name: "3306"
-    port: 3306
-    targetPort: 3306
+    - name: "3306"
+      port: 3306
+      targetPort: 3306
   selector:
     io.kompose.service: auth-db
 status:

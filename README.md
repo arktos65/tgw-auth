@@ -127,10 +127,10 @@ Now open your web browser and type in `http://localhost:3000/api/v1/ping`.  If t
 you should receive a JSON response that looks something like:
 
     {
-      "service":"Barrique OAuth Service::API",
-      "version":"0.1.0",
+      "service":"TGW OAuth Service::API",
+      "version":"0.3.1",
       "rails_version":"5.2.0",
-      "ruby_version":"2.5.1",
+      "ruby_version":"2.6.6",
       "database_connection":"OK",
       "timestamp":"2018-08-01T14:09:34.018-07:00"
     }
@@ -265,7 +265,7 @@ Use Helm to:
 
 The source code to the Helm charts for this service are stored in the `helm` directory in the project root.
 
-    helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    helm repo add stable https://charts.helm.sh/stable
 
 # License & Authors
 
