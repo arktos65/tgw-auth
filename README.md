@@ -1,6 +1,6 @@
 # TGW OAuth2 Provider
 
-[![Build Status](https://tgwconsulting.visualstudio.com/barrique/_apis/build/status/tgw-auth-build-master?branchName=master)](https://tgwconsulting.visualstudio.com/barrique/_build/latest?definitionId=35&branchName=master)
+[![Build Status](https://tgwconsulting.visualstudio.com/TGW/_apis/build/status/tgw-auth-build-master?branchName=master)](https://tgwconsulting.visualstudio.com/TGW/_build/latest?definitionId=35&branchName=master)
 
 This document provides an overview of the TGW OAuth2 provider for
 web, mobile, and native applications accessing TGW services.  You
@@ -11,7 +11,7 @@ will also find instructions for setting up development and test environments.
 ## Development Prerequisites
 
 The following prerequisites should be installed on your workstation before working on the
-Barrique API project:
+TGW API project:
 
 * Ruby Version Manager (http://www.rvm.io/)
 * MySQL Server CE (https://dev.mysql.com/downloads/)
@@ -193,46 +193,33 @@ The resulting image will be stored in your local Docker image repository.  The i
 This project uses Docker Compose making it very simple to start your development environment with all the 
 associated services in various containers.
 
-Starting the Barrique Auth service:
+Starting the TGW Auth service:
 
-    $ kompose up
+    $ cd <project_root>/helm
+    $ helm install auth-service tgw-auth
     
-    INFO Build key detected. Attempting to build and push image 'tgwconsulting/barrique-auth:latest' 
-    INFO Building image 'tgwconsulting/barrique-auth:latest' from directory 'barrique-auth' 
-    INFO Image 'tgwconsulting/barrique-auth:latest' from directory 'barrique-auth' built successfully 
-    INFO Pushing image 'tgwconsulting/barrique-auth:latest' to registry 'docker.io' 
-    INFO Attempting authentication credentials 'https://index.docker.io/v1/ 
-    INFO Successfully pushed image 'tgwconsulting/barrique-auth:latest' to registry 'docker.io' 
-    INFO We are going to create Kubernetes Deployments, Services and PersistentVolumeClaims for your Dockerized application. If you need different kind of resources, use the 'kompose convert' and 'kubectl create -f' commands instead. 
-     
-    INFO Deploying application in "barrique-dev" namespace 
-    INFO Successfully created Service: barrique-cache     
-    INFO Successfully created Service: barrique-db        
-    INFO Successfully created Service: barrique-server    
-    INFO Successfully created Deployment: barrique-cache  
-    INFO Successfully created Deployment: barrique-db     
-    INFO Successfully created PersistentVolumeClaim: barrique-data of size 100Mi. If your cluster has dynamic storage provisioning, you don't have to do anything. Otherwise you have to create PersistentVolume to make PVC work 
-    INFO Successfully created Deployment: barrique-server 
-    
-    Your application has been deployed to Kubernetes. You can run 'kubectl get deployment,svc,pods,pvc' for details.
-    
+    NAME: auth-service
+    LAST DEPLOYED: Mon Nov  9 09:40:47 2020
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    NOTES:
+    1. Get the application URL by running these commands:
+
+NOTE: It is common for the auth-server pods to restart once when installing the service because of timing issues
+between the initialization of the `auth-db` pod.  The `auth-server` pods will recycle automatically.
+
 To perform a graceful shutdown of your development environment:
 
-    $ kompose down
+    $ cd <project_root>/helm
+    $ helm uninstall auth-service
     
-    INFO Deleting application in "barrique-dev" namespace 
-    INFO Successfully deleted Service: barrique-cache     
-    INFO Successfully deleted Service: barrique-db        
-    INFO Successfully deleted Service: barrique-server    
-    INFO Successfully deleted Deployment: barrique-cache  
-    INFO Successfully deleted Deployment: barrique-db     
-    INFO Successfully deleted PersistentVolumeClaim: barrique-data 
-    INFO Successfully deleted Deployment: barrique-server 
+    release "auth-service" uninstalled
 
 ### Testing OAuth Server
 
 Once you have deployed the Rails application to your local Kubernetes cluster, you'll need to forward the port
-to the `barrique-server` service.  This can be done with the command:
+to the `TGW-server` service.  This can be done with the command:
 
     $ kubectl port-forward deployment/auth-server 3000
     
