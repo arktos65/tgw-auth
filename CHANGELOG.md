@@ -2,6 +2,11 @@
 
 This log documents all the changes to the TGW OAuth2 provider by version.
 
+## v0.3.2 (09-Nov-2020)
+
+- Updated Helm chart build process since `kompose up` has been deprecated.
+- Updated developer documentation.
+
 ## v0.3.1 (04-Nov-2020)
 
 - Updated Ruby language support from 2.5.4 to 2.6.6.
