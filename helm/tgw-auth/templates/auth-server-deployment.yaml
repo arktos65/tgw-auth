@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.service.expose: auth.tgwconsulting.local
+    kompose.service.type: nodeport
+    kompose.version: 1.22.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: auth-server
+  name: auth-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      io.kompose.service: auth-server
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.service.expose: auth.tgwconsulting.local
+        kompose.service.type: nodeport
+        kompose.version: 1.22.0 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: auth-server
+    spec:
+      containers:
+        - args:
+            - rails
+            - server
+            - -b
+            - 0.0.0.0
+            - -p
+            - "3000"
+          command:
+            - /opt/tgw/app/lib/docker-entrypoint.sh
+          env:
+            - name: RAILS_ENV
+              value: development
+          image: tgwconsulting/tgw-oauth-server:latest
+          name: auth-server
+          ports:
+            - containerPort: 3000
+          resources: {}
+      restartPolicy: Always
+status: {}

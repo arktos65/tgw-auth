@@ -1,4 +1,4 @@
-FROM ruby:2.5.4-slim AS build
+FROM ruby:2.6.6-slim AS build
 MAINTAINER Sean M. Sullivan <sean@tgwconsulting.co>
 
 # Install dependencies:
@@ -20,7 +20,7 @@ WORKDIR $INSTALL_PATH
 # drastically increase build times when your gems do not change.
 COPY Gemfile $INSTALL_PATH/Gemfile
 COPY Gemfile.lock $INSTALL_PATH/Gemfile.lock
-RUN gem install bundler -v 1.17.3 && bundle install --no-cache
+RUN gem install bundler:1.17.3 && bundle install --no-cache
 
 # Copy in the application code from your work station at the current directory
 # over to the working directory.

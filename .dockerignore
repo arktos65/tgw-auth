@@ -1,2 +1,6 @@
 # Exclude HTML design files
 workspace
+# Exclude git hooks
+hooks
+# Exclude Kubernetes scripts
+kubernetes

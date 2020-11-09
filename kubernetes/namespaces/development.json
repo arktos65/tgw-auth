@@ -1,0 +1,11 @@
+
+{
+    "kind": "Namespace",
+    "apiVersion": "v1",
+    "metadata": {
+      "name": "auth-dev",
+      "labels": {
+        "name": "auth-dev"
+      }
+    }
+  }

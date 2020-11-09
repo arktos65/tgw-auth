@@ -2,14 +2,19 @@
 
 # app/controllers/api/v1/api_controller.rb
 #
-# Copyright 2019 TGW Consulting, LLC. All rights reserved.
+# Copyright 2019-2020 TGW Consulting, LLC
 #
-# This source code is proprietary, confidential information of TGW Consulting, LLC.
-# It contains TGW Consulting intellectual property, including trade secrets and
-# copyright-protected authorship, and may include patentable inventions. You may
-# not distribute this source code outside of TGW Consulting without express written
-# permission from management. TGW Consulting does not claim ownership of included
-# open source software components, which are subject to their own licenses.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+#
+# You may obtain a copy of the License at
+# http://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 module Api::V1
   class ApiController < ::ApplicationController
@@ -39,7 +44,7 @@ module Api::V1
 
       # Return the service version as a string
       def service_version
-        "0.3.0"
+        "0.3.2"
       end
   end
 end
